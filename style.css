@@ -1,0 +1,136 @@
+/* Reset de margens e preenchimentos para garantir um layout mais uniforme */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo dos links para remover o sublinhado padrão e definir a fonte */
+a {
+    font-family: sans-serif;
+    text-decoration: none;
+}
+
+/* Estilização da logo - define o tamanho da imagem */
+.logo img {
+    width: 150px; /* Largura recomendada */
+    height: auto; /* Mantém a proporção */
+}
+
+/* Cabeçalho do site */
+.header {
+    background-color: #3b3232; /* Cor de fundo do cabeçalho */
+    padding-inline: 16px; /* Adiciona espaçamento lateral */
+}
+
+/* Barra de navegação */
+.nav {
+    max-width: 1280px; /* Define um limite máximo de largura */
+    height: 70px; /* Define uma altura fixa */
+    margin-inline: auto; /* Centraliza horizontalmente */
+    display: flex; /* Usa flexbox para organizar os elementos */
+    justify-content: space-between; /* Distribui os elementos uniformemente */
+    align-items: center; /* Alinha verticalmente */
+}
+
+/* Estilo da logo */
+.logo {
+
+
+    font-size: 48px; /* Define o tamanho da fonte da logo */
+}
+
+/* Lista de navegação */
+.nav-list {
+    display: flex; /* Mantém os itens em linha */
+    gap: 32px; /* Espaço entre os itens da lista */
+    list-style: none; /* Remove os marcadores de lista */
+}
+
+/* Links dentro da navegação */
+.nav-list a {
+    font-size: 18px; /* Tamanho da fonte */
+    color: #fff; /* Cor do texto */
+    padding-block: 16px; /* Espaçamento vertical nos links */
+}
+
+/* Seção hero (banner principal) */
+.hero {
+    height: calc(100vh - 70px); /* Define a altura com base na tela menos o cabeçalho */
+    background: center / cover no-repeat url(''); /* Define um fundo de imagem (precisa ser preenchido) */
+}
+
+/* Estilização do botão hamburguer */
+.hamburguer {
+    border: none; /* Remove a borda padrão do botão */
+    border-top: 3px solid #fff; /* Adiciona uma linha como parte do ícone */
+    cursor: pointer; /* Define como botão clicável */
+    background: none; /* Remove cor de fundo */
+    width: 30px; /* Largura do botão */
+    height: 24px; /* Altura do botão */
+    position: relative; /* Define posição relativa para ajustar os pseudo-elementos */
+}
+
+/* Linhas do botão hamburguer */
+.hamburguer::before,
+.hamburguer::after {
+    content: ""; /* Cria elementos visuais */
+    display: block; /* Define como elementos de bloco */
+    width: 30px; /* Largura */
+    height: 3px; /* Espessura */
+    background: #fff; /* Cor */
+    position: absolute; /* Posicionamento absoluto dentro do botão */
+    left: 0; /* Alinha à esquerda */
+    transition: 0.3s; /* Adiciona um efeito suave */
+}
+
+/* Posiciona a primeira linha do botão */
+.hamburguer::before {
+    top: 8px;
+}
+
+/* Posiciona a segunda linha do botão */
+.hamburguer::after {
+    top: 16px;
+}
+
+/* Estilos para telas menores */
+@media (max-width: 750px) {
+    .hamburguer {
+        display: block; /* Mostra o botão hamburguer */
+        z-index: 1; /* Garante que ele fique sobre os outros elementos */
+    }
+
+    /* Menu oculto por padrão, aparece ao ativar */
+    .nav-list {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw; /* Ocupa toda a largura */
+        height: 100vh; /* Ocupa toda a altura */
+        background: #a5c; /* Define uma cor de fundo */
+        clip-path: circle(100px at 90% -15%); /* Define um efeito de abertura */
+        transition: 1s ease-out; /* Adiciona um efeito suave */
+        flex-direction: column; /* Organiza os itens em coluna */
+        justify-content: space-around; /* Espaçamento uniforme */
+        align-items: center; /* Alinha os itens */
+        gap: 0; /* Remove espaços */
+        pointer-events: none; /* Impede interação antes de ativação */
+    }
+
+    /* Estiliza os links do menu */
+    .nav-list a {
+        font-size: 24px; /* Aumenta o tamanho da fonte */
+        opacity: 0; /* Oculta os links inicialmente */
+        transition: opacity 0.5s; /* Aparecimento gradual */
+    }
+
+    /* Classe ativa do menu */
+    .nav.active .nav-list {
+        clip-path: circle(1500px at 90% -15%); /* Expande o menu */
+        pointer-events: all; /* Permite interação */
+    }
+
+    .nav.active .nav-list a {
+        opacity: 1; /* Faz os links aparecerem */
+    }
+}
